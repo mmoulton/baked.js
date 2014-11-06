@@ -233,7 +233,7 @@ window.vm = require('vm');
     var listener = function (e) {
       if (e.target.nodeName == 'A') {
         var href = e.target.getAttribute('href');
-        if (!/http:\/\//.test(href)) {
+        if (!/^(http(s)?:\/\/|#)/i.test(href)) {
           e.preventDefault();
           var infos = _.assign(localRouter.urls[href], {href: href});
           loadPage(localRouter, infos)
@@ -273,4 +273,3 @@ window.vm = require('vm');
   document.addEventListener('DOMContentLoaded', start);
 
 })(window);
-
